@@ -5,7 +5,7 @@ services:
     ports:
       - "8080:80"
     env_file:
-      - .env
+      - backend/.env
     depends_on:
       - discnest-db
     volumes:
