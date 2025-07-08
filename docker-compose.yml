@@ -1,0 +1,27 @@
+services:
+  discnest-backend:
+    build: ./backend
+    container_name: discnest-backend
+    ports:
+      - "8080:80"
+    env_file:
+      - .env
+    depends_on:
+      - discnest-db
+    volumes:
+      - ./backend:/app
+    restart: unless-stopped
+
+  discnest-db:
+    image: postgres:16
+    container_name: discnest-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: discnest
+      POSTGRES_USER: discnest
+      POSTGRES_PASSWORD: discnest
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+volumes:
+  pgdata:
