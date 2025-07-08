@@ -21,7 +21,14 @@ class Game(Base):
     summary = Column(Text)
     series_id = Column(Integer, ForeignKey("series.id"), nullable=True)
 
-    # Relationships
+    container_id = Column(Integer, ForeignKey("containers.id"), nullable=True)
+    container = relationship("Container")
+    row = Column(Integer, nullable=True)    # let's assume this is an IKEA Kallax, 5x5, this is the row of cubes
+    cube = Column(Integer, nullable=True)   # for the same kallax, this is for each cube
+    shelf = Column(Integer, nullable=True)  # if it's more like a bookshelf, then this one is a better option
+    slot = Column(Integer, nullable=True)   # this is the exact location of the item. "3" would be the 3rd game from the left etc.
+    location_notes = Column(String, nullable=True)  # notes. yeah, just notes. that's it.
+
     genres = relationship(
         "Genre",
         secondary=game_genres,
