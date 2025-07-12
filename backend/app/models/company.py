@@ -9,13 +9,13 @@ class Company(Base):
     id = Column(Integer, primary_key=True)
     name = Column(String, unique=True, nullable=False)
 
-    developed_games = relationship(
+    games_developed = relationship(
         "Game",
         secondary=game_developers,
         back_populates="developers"
     )
 
-    published_games = relationship(
+    games_published = relationship(
         "Game",
         secondary=game_publishers,
         back_populates="publishers"

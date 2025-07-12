@@ -8,6 +8,9 @@ from app.models.theme import Theme
 from app.models.mode import Mode
 from app.models.perspective import Perspective
 from app.models.series import Series
+from app.models.copy import Copy
+from app.models.tag import Tag
+from app.models.image import Image
 
 def main():
     print("Creating all tables...")
